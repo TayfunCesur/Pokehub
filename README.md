@@ -15,7 +15,7 @@ This is my personal project to learn about new tech for me. This is a sample pro
 <br/>
 
 # So what is the differences between REST?
-As I am an Android Developer, I can compare them in client side.Rest is network architectural concept, but Graphql is a query language.
+As I am an Android Developer, I can compare them in client side.Rest is network architectural concept, but Graphql is a query language.Apollo Android is a good client framework for Graphql
  
  - In Apollo-Android, you don't have to create your own classes to retrieve network response.
  - Once you define your query like below, it will generate your model class automatically. That is really good thing, if you have knowledge  about traditional way.
