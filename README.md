@@ -49,7 +49,7 @@ That's it. Now you have your observable and you must just subscribe it and obser
 While setting up the project, you must add the graphql folder under the `app/src/graphql` folder. You can just put the `API.graphql` file under there and you can use it in proper way. But if you want use dagger, you must put it under the `app/src/graphql/{PACKAGENAME}/` folder. I wasn't careful while I'm doing this and I struggled for this issue about 2 days. Dagger does not recognize your auto-generated classes if you don't put them under the `app/src/graphql/{PACKAGENAME}/` folder.
  
  ## Outputs
- ![enter image description here](https://firebasestorage.googleapis.com/v0/b/events-c4167.appspot.com/o/pokehub%2FScreen%20Shot%202019-04-14%20at%2018.45.59.png?alt=media&token=eef406f0-2efb-439a-860b-30f94d091149)
+ <img height="400" src="https://firebasestorage.googleapis.com/v0/b/events-c4167.appspot.com/o/pokehub%2FScreen%20Shot%202019-04-14%20at%2018.45.59.png?alt=media&token=eef406f0-2efb-439a-860b-30f94d091149"></img>
 
 ## Thanks
 Thanks for [@lucasbento](https://github.com/lucasbento) to provide these useful API's.
