@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <import type="android.arch.lifecycle.LiveData"/>
+        <import type="com.tayfuncesur.pokehub.base.Resource.Loading"/>
+        <import type="com.tayfuncesur.pokehub.PokemonRepositoryQuery.Pokemon"/>
+        <import type="com.tayfuncesur.pokehub.base.Resource.Failure"/>
+        <import type="com.tayfuncesur.pokehub.base.Resource"/>
+        <import type="java.util.List"/>
+        <variable name="data" type="LiveData&lt;Resource&lt;List&lt;Pokemon&gt;&gt;&gt;"/>
+
+    </data>
+
+
+    <android.support.constraint.ConstraintLayout
+            android:layout_width="match_parent"
+            android:background="@color/white"
+            android:id="@+id/mainActivityRoot"
+            android:layout_height="match_parent">
+
+
+        <android.support.v7.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:background="@color/colorPrimary"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:contentInsetLeft="0dp"
+                app:contentInsetStart="0dp"
+                app:popupTheme="@style/AppTheme.PopupOverlay">
+
+
+            <android.support.v7.widget.AppCompatTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:layout_centerVertical="true"
+                    android:textColor="@color/white"
+                    android:textSize="18sp"
+                    android:text="@string/app_name"
+                    android:id="@+id/toolbarText"
+                    android:fontFamily="@font/manropemedium"
+                    tools:ignore="RtlSymmetry"/>
+
+        </android.support.v7.widget.Toolbar>
+
+        <android.support.v7.widget.RecyclerView
+                android:layout_width="0dp"
+                app:layout_constraintTop_toBottomOf="@+id/toolbar"
+                app:layout_constraintLeft_toLeftOf="parent"
+                android:id="@+id/recycler"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:layout_height="0dp"/>
+
+
+        <LinearLayout
+                android:layout_width="0dp"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:id="@+id/loadingLayout"
+                app:visibleGone="@{data instanceof Resource.Loading}"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:layout_height="0dp">
+
+            <com.airbnb.lottie.LottieAnimationView
+                    android:id="@+id/loadingAnim"
+                    android:layout_width="@dimen/loading_anim_size"
+                    android:layout_height="@dimen/loading_anim_size"
+                    android:layout_gravity="center"
+                    app:lottie_loop="true"
+                    app:lottie_fileName="anims/loading.json"
+                    android:background="@null"
+                    app:lottie_autoPlay="true"/>
+
+            <android.support.v7.widget.AppCompatTextView
+                    android:layout_width="wrap_content"
+                    android:fontFamily="@font/manropemedium"
+                    android:layout_height="wrap_content"
+                    android:text="@string/loading"
+                    android:textSize="16sp"
+                    android:layout_gravity="center"
+                    android:id="@+id/loadingText"
+                    app:layout_constraintRight_toRightOf="parent"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+                android:layout_width="0dp"
+                android:orientation="vertical"
+                android:id="@+id/errorLayout"
+                app:visibleGone="@{data instanceof Resource.Failure}"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:layout_marginLeft="16sp"
+                android:layout_marginStart="16sp"
+                android:layout_marginEnd="16sp"
+                android:layout_marginRight="16sp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                android:layout_height="wrap_content">
+
+            <com.airbnb.lottie.LottieAnimationView
+                    android:layout_width="@dimen/loading_anim_size"
+                    android:layout_height="@dimen/loading_anim_size"
+                    android:layout_gravity="center"
+                    app:lottie_loop="true"
+                    app:lottie_fileName="anims/error.json"
+                    android:id="@+id/animation_view2"
+                    app:lottie_autoPlay="true"/>
+
+            <android.support.v7.widget.AppCompatTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/error"
+                    android:textColor="@color/black"
+                    android:textSize="18sp"
+                    android:id="@+id/errorText"
+                    app:fontFamily="@font/manropemedium"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    app:layout_constraintTop_toBottomOf="@+id/animation_view2"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"/>
+        </LinearLayout>
+
+
+    </android.support.constraint.ConstraintLayout>
+
+</layout>

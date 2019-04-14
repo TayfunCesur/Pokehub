@@ -1,0 +1,318 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <import type="android.arch.lifecycle.LiveData"/>
+        <import type="com.tayfuncesur.pokehub.base.Resource.Loading"/>
+        <import type="com.tayfuncesur.pokehub.PokemonDetailRepositoryQuery.Pokemon"/>
+        <import type="com.tayfuncesur.pokehub.base.Resource.Failure"/>
+        <import type="com.tayfuncesur.pokehub.base.Resource.Success"/>
+        <import type="com.tayfuncesur.pokehub.base.Resource"/>
+        <variable name="data" type="LiveData&lt;Resource&lt;Pokemon&gt;&gt;"/>
+    </data>
+
+    <android.support.constraint.ConstraintLayout
+            android:layout_width="match_parent"
+            android:id="@+id/pokemonDetailView"
+            android:background="@color/white"
+            android:layout_height="match_parent">
+
+        <android.support.v7.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:background="@color/colorPrimary"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:contentInsetLeft="0dp"
+                app:contentInsetStart="0dp"
+                app:popupTheme="@style/AppTheme.PopupOverlay">
+
+            <android.support.v7.widget.AppCompatTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:layout_centerVertical="true"
+                    android:textColor="@color/white"
+                    android:textSize="18sp"
+                    android:id="@+id/toolbarText"
+                    android:fontFamily="@font/manropemedium"
+                    tools:ignore="RtlSymmetry"/>
+
+        </android.support.v7.widget.Toolbar>
+
+        <ScrollView android:layout_width="0dp"
+                    app:layout_constraintTop_toBottomOf="@+id/toolbar"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    android:layout_height="0dp">
+
+            <android.support.v7.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="16dp"
+                    android:clickable="true"
+                    android:focusable="true"
+                    app:cardElevation="5dp"
+                    app:cardCornerRadius="5dp">
+
+
+                <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_margin="16sp"
+                        android:orientation="vertical">
+
+                    <LinearLayout
+                            android:layout_width="match_parent"
+                            android:weightSum="2"
+                            android:layout_height="wrap_content">
+
+                        <ImageView android:layout_width="0dp"
+                                   android:layout_weight="1"
+                                   android:layout_height="180dp"
+                                   android:id="@+id/image"/>
+
+                        <LinearLayout android:layout_width="0dp"
+                                      android:layout_height="wrap_content"
+                                      android:layout_weight="1"
+                                      android:orientation="vertical">
+
+                            <LinearLayout android:layout_width="wrap_content"
+                                          android:layout_gravity="center"
+                                          android:gravity="center"
+                                          android:layout_height="wrap_content">
+
+                                <ImageView
+                                        android:layout_width="24sp"
+                                        android:layout_height="24sp"
+                                        android:src="@drawable/weight"/>
+
+                                <android.support.v7.widget.AppCompatTextView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:gravity="center"
+                                        android:textSize="16sp"
+                                        app:fontFamily="@font/manropemedium"
+                                        android:text="@string/weight"
+                                        android:textColor="@color/colorAccent"
+                                        android:id="@+id/weightLabel"/>
+
+                            </LinearLayout>
+
+                            <android.support.v7.widget.AppCompatTextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:gravity="center"
+                                    android:layout_gravity="center"
+                                    app:fontFamily="@font/manropemedium"
+                                    android:textColor="@color/black"
+                                    android:id="@+id/weight"/>
+
+
+                            <LinearLayout android:layout_width="wrap_content"
+                                          android:layout_gravity="center"
+                                          android:gravity="center"
+                                          android:layout_marginTop="16sp"
+                                          android:layout_height="wrap_content">
+
+                                <ImageView
+                                        android:layout_width="24sp"
+                                        android:layout_height="24sp"
+                                        android:src="@drawable/height"/>
+
+                                <android.support.v7.widget.AppCompatTextView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:gravity="center"
+                                        android:textSize="16sp"
+                                        app:fontFamily="@font/manropemedium"
+                                        android:text="@string/height"
+                                        android:textColor="@color/colorAccent"
+                                        android:id="@+id/heightLabel"/>
+
+                            </LinearLayout>
+
+                            <android.support.v7.widget.AppCompatTextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:gravity="center"
+                                    android:layout_gravity="center"
+                                    app:fontFamily="@font/manropemedium"
+                                    android:textColor="@color/black"
+                                    android:id="@+id/height"/>
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content">
+
+                        <android.support.v7.widget.AppCompatTextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/resistance"
+                                app:fontFamily="@font/manropemedium"
+                                android:textColor="@color/colorAccent"
+                                android:id="@+id/resistanceLabel"/>
+
+
+                        <android.support.v7.widget.AppCompatTextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="4sp"
+                                app:fontFamily="@font/manropemedium"
+                                android:textColor="@color/black"
+                                android:id="@+id/resistance" android:layout_marginStart="4sp"/>
+
+                    </LinearLayout>
+
+                    <LinearLayout android:layout_width="match_parent"
+                                  android:layout_marginTop="8sp"
+                                  android:visibility="gone"
+                                  android:layout_height="wrap_content">
+
+                        <android.support.v7.widget.AppCompatTextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/specialAttacks"
+                                app:fontFamily="@font/manropemedium"
+                                android:textColor="@color/colorAccent"/>
+
+
+                        <android.support.v7.widget.AppCompatTextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="4sp"
+                                app:fontFamily="@font/manropemedium"
+                                android:textColor="@color/black"
+                                android:id="@+id/specialAttacks"
+                                android:layout_marginStart="4sp"/>
+
+                    </LinearLayout>
+
+                    <LinearLayout android:layout_width="match_parent"
+                                  android:layout_marginTop="8sp"
+                                  android:layout_height="wrap_content">
+
+                        <android.support.v7.widget.AppCompatTextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/weaknesses"
+                                app:fontFamily="@font/manropemedium"
+                                android:textColor="@color/colorAccent"/>
+
+
+                        <android.support.v7.widget.AppCompatTextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="4sp"
+                                app:fontFamily="@font/manropemedium"
+                                android:textColor="@color/black"
+                                android:id="@+id/weaknesses"
+                                android:layout_marginStart="4sp"/>
+
+                    </LinearLayout>
+
+                    <android.support.v7.widget.AppCompatTextView
+                            android:layout_width="wrap_content"
+                            android:layout_marginTop="16sp"
+                            android:layout_height="wrap_content"
+                            android:text="@string/evolutions"
+                            android:layout_gravity="center"
+                            android:id="@+id/evolutionLabel"
+                            app:fontFamily="@font/manropemedium"
+                            android:textColor="@color/colorAccent"/>
+
+                    <android.support.v7.widget.RecyclerView
+                            android:layout_width="match_parent"
+                            android:id="@+id/evolutionRecycler"
+                            android:layout_height="match_parent"/>
+
+                </LinearLayout>
+
+
+            </android.support.v7.widget.CardView>
+        </ScrollView>
+
+        <LinearLayout
+                android:layout_width="0dp"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:id="@+id/loadingLayout"
+                app:visibleGone="@{data instanceof Resource.Loading}"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:layout_height="0dp">
+
+            <com.airbnb.lottie.LottieAnimationView
+                    android:id="@+id/loadingAnim"
+                    android:layout_width="@dimen/loading_anim_size"
+                    android:layout_height="@dimen/loading_anim_size"
+                    android:layout_gravity="center"
+                    app:lottie_loop="true"
+                    app:lottie_fileName="anims/loading.json"
+                    android:background="@null"
+                    app:lottie_autoPlay="true"/>
+
+            <android.support.v7.widget.AppCompatTextView
+                    android:layout_width="wrap_content"
+                    android:fontFamily="@font/manropemedium"
+                    android:layout_height="wrap_content"
+                    android:text="@string/loadingDetail"
+                    android:textSize="16sp"
+                    android:layout_gravity="center"
+                    android:id="@+id/loadingText"
+                    app:layout_constraintRight_toRightOf="parent"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+                android:layout_width="0dp"
+                android:orientation="vertical"
+                android:id="@+id/errorLayout"
+                app:visibleGone="@{data instanceof Resource.Failure}"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:layout_marginLeft="16sp"
+                android:layout_marginStart="16sp"
+                android:layout_marginEnd="16sp"
+                android:layout_marginRight="16sp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                android:layout_height="wrap_content">
+
+            <com.airbnb.lottie.LottieAnimationView
+                    android:layout_width="@dimen/loading_anim_size"
+                    android:layout_height="@dimen/loading_anim_size"
+                    android:layout_gravity="center"
+                    app:lottie_loop="true"
+                    app:lottie_fileName="anims/error.json"
+                    android:id="@+id/animation_view2"
+                    app:lottie_autoPlay="true"/>
+
+            <android.support.v7.widget.AppCompatTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/error"
+                    android:textColor="@color/black"
+                    android:textSize="18sp"
+                    android:id="@+id/errorText"
+                    app:fontFamily="@font/manropemedium"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    app:layout_constraintTop_toBottomOf="@+id/animation_view2"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"/>
+        </LinearLayout>
+
+
+    </android.support.constraint.ConstraintLayout>
+</layout>
+

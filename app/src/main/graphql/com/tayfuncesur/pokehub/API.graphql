@@ -1,0 +1,7 @@
+query PokemonRepository($first:Int!){
+  pokemons(first:$first) {
+    id
+    image
+    name
+  }
+}

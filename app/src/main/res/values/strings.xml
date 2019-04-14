@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">PokeHub</string>
+    <string name="loading">Loading Pokemons…</string>
+    <string name="error">An error has occurred</string>
+    <string name="weight">Weight</string>
+    <string name="height">Height</string>
+    <string name="resistance">Resistant: </string>
+    <string name="specialAttacks">Special Attacks</string>
+    <string name="weaknesses">Weaknesses</string>
+    <string name="evolutions">Evolutions</string>
+    <string name="loadingDetail">Getting Details..</string>
+</resources>
