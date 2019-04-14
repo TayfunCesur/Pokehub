@@ -52,7 +52,7 @@ While setting up the project, you must add the graphql folder under the `app/src
  ![enter image description here](https://firebasestorage.googleapis.com/v0/b/events-c4167.appspot.com/o/pokehub%2FScreen%20Shot%202019-04-14%20at%2018.45.59.png?alt=media&token=eef406f0-2efb-439a-860b-30f94d091149)
 
 ## Thanks
-Thanks for @lucasbento to provide these useful API's.
+Thanks for [@lucasbento](https://github.com/lucasbento) to provide these useful API's.
 [Graphql Pokemon API](https://github.com/lucasbento/graphql-pokemon)
 
 ## Licence
